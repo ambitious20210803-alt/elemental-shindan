@@ -1,109 +1,129 @@
 <!DOCTYPE html>
 <html lang="ja"><head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
-<meta name="theme-color" content="#2b2350">
-<title>4属性 こころ診断</title>
-<meta name="description" content="風・水・地・火の4属性×3つのレイヤーで、本来のあなた・周りから見たあなた・なりたいあなたを診断します。全18問・約3分。">
+<meta name="theme-color" content="#070a1f">
+<title>精霊診断｜あなたに宿る4つの精霊</title>
+<meta name="description" content="シルフ・ウンディーネ・ガイア・インフェルノ。4つの精霊×3つの視点で、本来のあなた・周りから見たあなた・なりたいあなたを診断します。全18問・約3分。">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="img/icon-192.png">
 <link rel="apple-touch-icon" href="img/icon-180.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="こころ診断">
+<meta name="apple-mobile-web-app-title" content="精霊診断">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://ambitious20210803-alt.github.io/elements-shindan/">
-<meta property="og:title" content="4属性 こころ診断｜風・水・地・火で見るあなたのエネルギー">
-<meta property="og:description" content="本来のあなた・周りから見たあなた・なりたいあなた。3つのレイヤーで自分を知る、全18問・約3分の無料診断。">
-<meta property="og:image" content="https://ambitious20210803-alt.github.io/elements-shindan/img/ogp.png">
+<meta property="og:url" content="https://ambitious20210803-alt.github.io/seirei-shindan/">
+<meta property="og:title" content="精霊診断｜あなたに宿る4つの精霊">
+<meta property="og:description" content="シルフ・ウンディーネ・ガイア・インフェルノ。あなたに宿る精霊はどれ？全18問・約3分の無料診断。">
+<meta property="og:image" content="https://ambitious20210803-alt.github.io/seirei-shindan/img/ogp.png">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://ambitious20210803-alt.github.io/elements-shindan/img/ogp.png">
+<meta name="twitter:image" content="https://ambitious20210803-alt.github.io/seirei-shindan/img/ogp.png">
 <style>
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-body{font-family:"Hiragino Sans","Noto Sans JP",sans-serif;background:linear-gradient(160deg,#2b2350,#4a3f7a 60%,#6b5aa6);color:#2d2a3a;min-height:100vh;touch-action:manipulation}
-.wrap{max-width:480px;margin:0 auto;padding:20px 16px 40px}
-.card{background:#fff;border-radius:20px;padding:24px 20px;box-shadow:0 10px 30px rgba(0,0,0,.25);margin-bottom:16px}
-h1{font-size:24px;text-align:center;line-height:1.4}
-h2{font-size:18px;margin-bottom:12px}
-p{line-height:1.8;font-size:15px}
-.sub{color:#777;font-size:13px;text-align:center;margin-top:6px}
-.els{display:flex;justify-content:space-around;margin:20px 0}
-.el{text-align:center;font-size:13px;font-weight:bold}
-.el .ic{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;margin:0 auto 6px;color:#fff}
-.btn{display:block;width:100%;border:none;border-radius:14px;padding:16px;font-size:17px;font-weight:bold;color:#fff;background:linear-gradient(90deg,#7a5cff,#b65cff);margin-top:16px;cursor:pointer;text-align:center;text-decoration:none}
-.btn.line{background:#06c755}
-.btn.ghost{background:#eee;color:#555}
-input{width:100%;padding:14px;font-size:16px;border:2px solid #ddd;border-radius:12px;margin-top:6px}
-label{display:block;font-size:14px;font-weight:bold;margin-top:14px}
-.top{display:flex;justify-content:space-between;align-items:center;color:#fff;font-size:13px;margin-bottom:10px}
-.bar{height:8px;background:rgba(255,255,255,.25);border-radius:4px;overflow:hidden;margin-bottom:16px}
-.bar i{display:block;height:100%;background:#ffd36b;transition:width .3s}
-.layer{display:inline-block;background:#efe9ff;color:#6a4fd8;font-size:12px;font-weight:bold;padding:4px 10px;border-radius:20px;margin-bottom:10px}
-.q{font-size:18px;font-weight:bold;line-height:1.6;margin-bottom:16px}
-.opt{display:block;width:100%;text-align:left;border:2px solid #e6e1f5;background:#faf9ff;border-radius:14px;padding:15px;font-size:15px;line-height:1.5;margin-bottom:10px;cursor:pointer;color:#2d2a3a}
+body{font-family:"Hiragino Mincho ProN","Yu Mincho","Noto Serif JP","Noto Serif CJK JP",serif;color:#f1ead8;background:radial-gradient(ellipse at 50% -10%,#3a2a7a 0%,#141038 45%,#070a1f 100%) fixed;min-height:100vh;touch-action:manipulation}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.8;background-image:radial-gradient(1px 1px at 10% 20%,#fff,transparent),radial-gradient(1px 1px at 30% 70%,#fff,transparent),radial-gradient(1.5px 1.5px at 55% 15%,#ffe9a8,transparent),radial-gradient(1px 1px at 80% 40%,#fff,transparent),radial-gradient(1px 1px at 90% 85%,#cfe,transparent),radial-gradient(1.5px 1.5px at 20% 90%,#fff,transparent),radial-gradient(1px 1px at 65% 60%,#fff,transparent),radial-gradient(1px 1px at 45% 35%,#ffd,transparent),radial-gradient(1px 1px at 5% 55%,#fff,transparent),radial-gradient(1.5px 1.5px at 75% 8%,#fff,transparent)}
+.wrap{position:relative;max-width:480px;margin:0 auto;padding:20px 16px 48px}
+.hero{text-align:center;padding:28px 0 18px}
+.eyebrow{letter-spacing:.35em;font-size:11px;color:#d8b86a}
+.title{font-size:44px;letter-spacing:.12em;margin:8px 0;background:linear-gradient(180deg,#fff6d6,#d8b86a 70%,#a07c32);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 0 30px rgba(216,184,106,.25)}
+.lead{font-size:15px;color:#cfc6e8;letter-spacing:.1em}
+.card{background:rgba(22,18,58,.72);border:1px solid rgba(216,184,106,.4);border-radius:18px;padding:22px 18px;margin-bottom:16px;box-shadow:0 0 30px rgba(110,90,255,.15),inset 0 0 20px rgba(216,184,106,.05);backdrop-filter:blur(6px)}
+h1{font-size:24px;text-align:center;line-height:1.5;color:#fff6d6}
+h2{font-size:18px;margin-bottom:12px;color:#e8cf8a;letter-spacing:.05em}
+h2:before{content:"✦ ";color:#d8b86a}
+p{line-height:1.9;font-size:15px}
+.sub{color:#b9b0d6;font-size:13px;text-align:center;margin-top:6px}
+.orb{border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto;flex-shrink:0}
+.orbs{display:flex;justify-content:space-between;margin:6px 0 18px}
+.orbs .o{text-align:center;width:25%}
+.orbs b{display:block;font-size:13px;margin-top:8px}
+.orbs small{font-size:10px;color:#b9b0d6}
+.btn{display:block;width:100%;border:none;border-radius:40px;padding:16px;font-size:17px;font-weight:bold;font-family:inherit;color:#1b1440;background:linear-gradient(180deg,#fff0bf,#d8b86a 60%,#b48d3e);margin-top:16px;cursor:pointer;text-align:center;text-decoration:none;letter-spacing:.1em;box-shadow:0 0 18px rgba(216,184,106,.35)}
+.btn.line{background:#06c755;color:#fff;box-shadow:none}
+.btn.ghost{background:transparent;color:#e8cf8a;border:1px solid rgba(216,184,106,.5);box-shadow:none}
+input{width:100%;padding:14px;font-size:16px;border:1px solid rgba(216,184,106,.5);background:rgba(255,255,255,.06);color:#fff;border-radius:12px;margin-top:6px;font-family:inherit}
+input::placeholder{color:#8f87ad}
+label{display:block;font-size:14px;margin-top:14px;color:#e8cf8a}
+.top{display:flex;justify-content:space-between;align-items:center;color:#cfc6e8;font-size:13px;margin-bottom:10px}
+.bar{height:6px;background:rgba(255,255,255,.12);border-radius:4px;overflow:hidden;margin-bottom:16px}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,#9b7bff,#d8b86a);transition:width .3s}
+.layer{display:inline-block;font-size:12px;font-weight:bold;padding:4px 12px;border-radius:20px;margin-bottom:10px;border:1px solid}
+.q{font-size:18px;font-weight:bold;line-height:1.7;margin-bottom:16px;color:#fff6d6}
+.opt{display:block;width:100%;text-align:left;border:1px solid rgba(216,184,106,.3);background:rgba(255,255,255,.05);border-radius:14px;padding:15px;font-size:15px;line-height:1.6;margin-bottom:10px;cursor:pointer;color:#f1ead8;font-family:inherit}
 .opt:active{transform:scale(.98)}
-.opt.sel{border-color:#7a5cff;background:#efe9ff}
-.back{background:none;border:none;color:#fff;font-size:13px;cursor:pointer}
-.res-el{display:flex;align-items:center;gap:12px;margin:8px 0 14px}
-.res-el .ic{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;color:#fff;flex-shrink:0}
-.res-el b{font-size:20px}
-.rows div{display:flex;align-items:center;gap:8px;font-size:13px;margin:6px 0}
-.rows span{width:28px}
-.rows em{flex:1;height:12px;background:#f0eef7;border-radius:6px;overflow:hidden}
+.opt.sel{border-color:#d8b86a;background:rgba(216,184,106,.18);box-shadow:0 0 14px rgba(216,184,106,.35)}
+.back{background:none;border:none;color:#cfc6e8;font-size:13px;cursor:pointer;font-family:inherit}
+.main{text-align:center;margin:18px 0 6px}
+.main .nm{font-size:30px;font-weight:bold;margin-top:12px;letter-spacing:.08em}
+.main .tt{font-size:13px;color:#cfc6e8}
+.res-el{display:flex;align-items:center;gap:14px;margin:8px 0 14px}
+.res-el b{font-size:21px}
+.rows div{display:flex;align-items:center;gap:8px;font-size:13px;margin:7px 0}
+.rows span{width:86px;font-size:12px}
+.rows em{flex:1;height:10px;background:rgba(255,255,255,.1);border-radius:6px;overflow:hidden}
 .rows em i{display:block;height:100%;border-radius:6px}
 .rows small{width:38px;text-align:right}
-svg{display:block;margin:0 auto}
-.note{font-size:12px;color:#999;line-height:1.7;margin-top:12px}
+.desc{border-left:3px solid;padding:2px 0 2px 12px;margin-top:14px}
+.desc p,.tr p{font-size:14px;line-height:1.9}
+.desc h3,.tr h3{font-size:14px;margin:12px 0 4px}
+.note{font-size:12px;color:#9e96bd;line-height:1.7;margin-top:12px}
+.sms{margin-top:14px;text-align:left}
+.sm{display:flex;justify-content:space-between;align-items:center;padding:11px 4px;border-top:1px solid rgba(216,184,106,.25);font-size:14px}
+.sm b{font-size:17px}
 .mxw{position:relative;padding:26px 30px;margin-top:6px}
-.mx{position:relative;aspect-ratio:1/1;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr}
-.mx:before{content:"";position:absolute;left:50%;top:0;bottom:0;border-left:2px solid #333}
-.mx:after{content:"";position:absolute;top:50%;left:0;right:0;border-top:2px solid #333}
-.mq{padding:5px;font-size:9.5px;line-height:1.55;overflow:hidden;font-weight:bold}
+.mx{position:relative;aspect-ratio:1/1;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;background:radial-gradient(circle,rgba(216,184,106,.12),transparent 70%)}
+.mx:before{content:"";position:absolute;left:50%;top:0;bottom:0;border-left:1px solid #d8b86a}
+.mx:after{content:"";position:absolute;top:50%;left:0;right:0;border-top:1px solid #d8b86a}
+.mq{padding:5px;font-size:10px;line-height:1.6;overflow:hidden;font-weight:bold}
 .mq.q-tr,.mq.q-br{text-align:right}
 .mq.q-bl,.mq.q-br{display:flex;flex-direction:column-reverse;justify-content:flex-start}
-.mq.q-bl{align-items:flex-start}
-.mq.q-br{align-items:flex-end}
-.mt{display:inline-block;border:2px solid;padding:0 6px;font-size:16px;margin:2px 0;background:#fff}
-.kw{opacity:.55}
-.dot{position:absolute;width:28px;height:28px;margin:-14px 0 0 -14px;border-radius:50%;color:#fff;font-size:12px;font-style:normal;font-weight:bold;display:flex;align-items:center;justify-content:center;border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.4);z-index:2}
-.ax{position:absolute;font-size:11px;font-weight:bold;color:#333}
+.mq.q-bl{align-items:flex-start}.mq.q-br{align-items:flex-end}
+.mt{display:inline-block;border:1px solid;padding:1px 8px;font-size:13px;margin:2px 0;border-radius:12px;background:rgba(7,10,31,.8)}
+.kw{opacity:.6}
+.dot{position:absolute;width:30px;height:30px;margin:-15px 0 0 -15px;border-radius:50%;color:#fff;font-size:12px;font-style:normal;font-weight:bold;display:flex;align-items:center;justify-content:center;border:2px solid #fff6d6;box-shadow:0 0 12px rgba(255,246,214,.7);z-index:2}
+.ax{position:absolute;font-size:11px;color:#e8cf8a}
 .ax.t{top:4px;left:0;right:0;text-align:center}.ax.b{bottom:4px;left:0;right:0;text-align:center}
-.ax.l{left:4px;top:50%;transform:translateY(-50%);text-align:center;line-height:1.2}
-.ax.r{right:4px;top:50%;transform:translateY(-50%);text-align:center;line-height:1.2}
-.lg{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;font-size:12px}
+.ax.l{left:2px;top:50%;transform:translateY(-50%);text-align:center;line-height:1.3;width:24px}
+.ax.r{right:2px;top:50%;transform:translateY(-50%);text-align:center;line-height:1.3;width:24px}
+.lg{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;font-size:12px;color:#cfc6e8}
 .lg i{display:inline-flex;width:18px;height:18px;border-radius:50%;color:#fff;font-style:normal;font-size:10px;align-items:center;justify-content:center;margin-right:3px}
-.sms{margin-top:14px;text-align:left}
-.sm{display:flex;justify-content:space-between;align-items:center;padding:10px 4px;border-top:1px solid #eee;font-size:14px}
-.sm b{font-size:17px}
-.desc{border-left:4px solid;padding:2px 0 2px 12px;margin-top:14px}
-.desc p,.tr p{font-size:14px;line-height:1.8}
-.desc h3,.tr h3{font-size:14px;margin:10px 0 4px}
-.trow{display:flex;border:1px solid #333;margin-top:-1px}
-.tl{width:52px;flex-shrink:0;color:#fff;font-size:22px;font-weight:bold;display:flex;align-items:center;justify-content:center}
-.tr{padding:10px;flex:1}
-.tr p{font-size:13px;line-height:1.7}
-.hide{display:none}
+.trow{display:flex;border:1px solid rgba(216,184,106,.35);border-radius:12px;overflow:hidden;margin-top:10px}
+.tl{width:64px;flex-shrink:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-size:11px;font-weight:bold;text-align:center;padding:8px 2px;background:rgba(255,255,255,.04)}
+.tr{padding:10px 12px;flex:1}
+.tr p{font-size:13px}
 </style></head><body><div class="wrap" id="app"></div>
 <script>
 // ===== 設定 =====
-const LINE_URL="https://line.me/R/ti/p/%40vtt8412y"; // 詳しいレポート案内先（差し替え可）
+var LINE_URL=""; // 公式LINEのURLを入れるとボタンが出ます
+var SK="seirei_result_v1";
 
-const E={
- wind:{n:"風",c:"#3e9e4a",ic:"風",k:"実現と達成",d:"実現と達成の属性です。この属性のエネルギーが強い人は、結果や功績を出すために突き進む力に長けています。未来を切り拓いていくことに人一倍意識が向き、そのために努力を惜しみません。一方で、細かい部分にまで気を配ることは苦手で、仕事も人間関係も雑になりがちという側面もあります。後先考えないことも多々あるため、トラブルメーカーになりやすい部分も否めません。",env:"とにかく突き進むことが重要です。見切り発車で良いのでどんどん行動を起こして、達成・実現していくことでこの属性は強まります。細かい説明や言語化は置いておいて、ノリや勢いを最優先に。そして、途中経過よりも結果にコミットする姿勢を持つことです。未経験なことにも勇気を持って挑戦し、道を切り拓いていってください。",kw:["邁進","行動力","成功","ノリと勢い","達成","見栄","刺激","拡げる","1対多","放つ","実現する","リーダーシップ","直進","結果主義","勝利","目立つ"]},
- water:{n:"水",c:"#2f9ad8",ic:"水",k:"感性と解放",d:"感性と解放の属性です。この属性のエネルギーが強い人は、感性や感情をとても大切にします。感情表現が豊かで、様々な人から好かれやすく、ムードメーカー的な存在になることもあります。一方で、一度落ち込んだり不調になると、それが長続きしてしまうこともあります。自分の感情や気持ちのコンディションに、肉体も引きずられがち。束縛を嫌い、常に自由で満たされていたいと考える傾向が強いです。",env:"感情と感覚をできる限り鋭敏にすることが、この属性のエネルギーを強めます。何かを決める時、「正しいかどうか」ではなく「気持ちいいか」「嬉しいか」という、自分自身の心の欲求にトコトン従うことです。そして、なるべくドキドキワクワクする状況に身を置くことが大切です。その日の気分で行きたいところに出かけましょう。",kw:["感情優先","適応する","直観","飽きっぽい","包容力","傾聴","臨機応変","受け取る","フットワーク軽い","緩める","感性","感覚的","解放","共感","多対多","好奇心"]},
- earth:{n:"地",c:"#b08a2a",ic:"地",k:"安心と調和",d:"安心と調和の属性です。この属性のエネルギーが強い人は、協調性が高く、場の空気を読むことに長けています。物事を整理・調整したり、周到に計画を立てるチカラに優れているため、自分はもとより周りにも安心感をもたらします。一方で、気が小さく引っ込み思案であったり、行動が遅い・優柔不断という面も持っています。計画的にいかないとすぐ不安になり、行動を起こせなかったりもします。",env:"最も重要な考え方は、「どうすればみんなが良いと思えるのか」ということです。大きな成果や目立った成功より、全体のバランスが整っているかどうかをよく見ることが大切です。そして、「何をするか」よりも「誰とするか」「どうやってするか」という、プロセスの方を重要視することです。また、刺激が沢山ありすぎると疲れてしまうので、新しい出会いよりも気心知れた人と長い時間を過ごすことがポイントです。",kw:["プロセス重視","ファシリテーション","気配り","説明する","マネジメント","長期的","平穏","計画的","事務作業","把握する","協調","整理する","1対1","調整","調和","安心"]},
- fire:{n:"火",c:"#dc3a2a",ic:"火",k:"創造と論理",d:"創造と論理の属性です。この属性のエネルギーが強い人は、専門性の高さや問題解決の力があるとともに、本質を見抜くチカラに長けています。クリエイティブなセンスを持ち合わせ、自分の得意分野では圧倒的な成果を出すことができます。一方で、人の感情の機微に疎いので、人間関係に苦手意識があり、自分の世界に閉じこもりがちです。物事の核心部分以外はどうでもよく感じてしまい、回り道を嫌うので、他者との軋轢を生むことも少なくありません。",env:"物事の「理」を知ること、本質を理解することが何より重要となります。言いたいことや物事の優先順位を付けることなどに焦点を当ててください。また、あれこれ手をつけるより、ひとつをトコトン深め、極めていくことでも、この属性のエネルギーは高まります。同じ趣味、同じ分野で鎬を削り合える仲間を持ちましょう。",kw:["本質","自信","専門性","孤独","言語化","深める","論理","納得","研究","鍛錬","思考重視","こだわり","集中力","情熱","正しさ","クリエイション"]}
+var S={
+ wind:{n:"シルフ",el:"風",t:"疾風の精霊",c:"#4fe0a8",ic:"🌪️",k:"前へ進む力",
+  d:"疾風の精霊シルフが宿るあなたは、思い描いた未来へ一直線に向かう推進力の持ち主です。目標を見つけると迷わず動き出し、周りを巻き込みながら結果をつかみ取ります。人前に立つことも苦になりません。ただ、勢いのあまり細かいところを見落としたり、周りの歩幅を置き去りにしてしまうこともあります。",
+  env:"考えるより先に一歩を踏み出してください。小さくても「やり切った」経験を積むほど、シルフの風は強くなります。挑戦の場、人前に立つ場、結果が数字で見える環境が、あなたの追い風になります。",
+  kw:["突破","挑戦","スピード","勝負","先導","拡大","成果","決断","前進","主役","突風","高みへ"]},
+ water:{n:"ウンディーネ",el:"水",t:"泉の精霊",c:"#5ab8ff",ic:"💧",k:"感じる力",
+  d:"泉の精霊ウンディーネが宿るあなたは、心の動きをまっすぐ受け取り、表現できる人です。その場の空気を明るくし、人の気持ちにそっと寄り添えます。型にはめられるのが苦手で、心が自由なときにいちばん輝きます。そのぶん、気分の波に体調まで左右されやすい一面もあります。",
+  env:"「正しいか」より「心が喜ぶか」で選んでみてください。ときめくもの、美しいもの、心が揺れる体験に触れるほど、ウンディーネの水は澄んでいきます。予定を詰め込みすぎない余白も大切です。",
+  kw:["感受性","自由","ひらめき","共感","表現","癒し","好奇心","気まぐれ","柔軟","遊び心","流れに乗る","波"]},
+ earth:{n:"ガイア",el:"地",t:"大地の精霊",c:"#e0b04a",ic:"🌿",k:"支える力",
+  d:"大地の精霊ガイアが宿るあなたは、周りを見渡し、全体を整える人です。段取りや調整が得意で、あなたがいるだけで場が落ち着きます。信頼を少しずつ積み重ねていくタイプです。一方で、慎重さが行き過ぎると一歩を踏み出せなかったり、先が見えないことに不安を感じやすい面もあります。",
+  env:"「何をするか」と同じくらい、「誰と、どう進めるか」を大切にしてください。信頼できる人との穏やかな時間、整った環境、見通しの立つ計画が、ガイアの大地を豊かにします。刺激が多すぎる日は、意識して休みましょう。",
+  kw:["安心","段取り","信頼","調整","見守る","継続","誠実","協力","丁寧","計画","支え合い","根を張る"]},
+ fire:{n:"インフェルノ",el:"火",t:"業火の精霊",c:"#ff6a45",ic:"🔥",k:"極める力",
+  d:"業火の精霊インフェルノが宿るあなたは、物事の芯を見抜き、ひとつの道を深く掘り下げる人です。こだわりと集中力で、得意な分野では誰にも負けない成果を生み出します。一方で、本質と関係のないことには興味が持てず、人づきあいを後回しにして孤立しがちな面もあります。",
+  env:"「なぜ？」をとことん突き詰めてください。ひとつのテーマを選び、深く学び、自分の言葉で語れるようになるほど、インフェルノの炎は大きく燃え上がります。同じ熱量で語り合える仲間がいると、さらに強くなります。",
+  kw:["探究","本質","こだわり","集中","職人気質","論理","創造","信念","独自性","深掘り","孤高","灯火"]}
 };
-const LC={sen:"#6a4fd8",hyo:"#f08c2a",shi:"#e0408a"};
-const KEYS=["wind","water","earth","fire"];
-const LAYERS={
- sen:{n:"潜在",t:"本来のあなた",d:"心の奥にある、もともと持っている性質"},
- hyo:{n:"表出",t:"周りから見たあなた",d:"人から見られている、表に出ている性質"},
- shi:{n:"志向",t:"なりたいあなた",d:"これからこうなりたい、という理想の性質"}
+var KEYS=["wind","water","earth","fire"];
+var LAYERS={
+ sen:{n:"魂の精霊",s:"魂",t:"本来のあなた",c:"#b18cff",d:"心の奥に、もともと宿っている精霊"},
+ hyo:{n:"纏う精霊",s:"纏",t:"周りから見たあなた",c:"#ffb15a",d:"周りの人に見えている、あなたが纏う精霊"},
+ shi:{n:"導く精霊",s:"導",t:"なりたいあなた",c:"#ff7ab6",d:"これからのあなたを導いていく精霊"}
 };
-// 各選択肢は [風,水,地,火] の順（風=実現達成/水=感性解放/地=安心調和/火=創造論理）
-const Q=[
+// 各選択肢は [シルフ,ウンディーネ,ガイア,インフェルノ] の順
+var Q=[
  ["sen","予定のない休日、気づくとしていることは？",["目標に向けて動く、予定をどんどん入れる","その日の気分で行きたいところへ出かける","気心の知れた人とゆっくり過ごす","好きなことにひとりで没頭する"]],
  ["sen","困ったことが起きたとき、まず心に浮かぶのは？",["とにかく動いて結果を出そう","気持ちが落ち着くまで、少し離れたい","周りと相談して、みんなが納得する形を探そう","原因を突き止めて、筋道を立てて考えよう"]],
  ["sen","心が満たされるのは、どんなとき？",["目標を達成して認められたとき","ワクワクすることや心が動くことがあったとき","みんなが穏やかに過ごせているとき","物事の本質がわかって、腑に落ちたとき"]],
@@ -123,114 +143,92 @@ const Q=[
  ["shi","もっと伸ばしたい力は？",["行動力と、やり切る力","感性と、人に共感する力","計画力と、まとめる力","考える力と、深める力"]],
  ["shi","理想の休日の過ごし方は？",["新しいことに挑戦して、刺激をもらう","思いつくまま、気ままに過ごす","大切な人と、ゆっくり過ごす","ひとりで好きなことを掘り下げる"]]
 ];
-// 選択肢の表示順をシャッフル（問題ごとに固定）
-const ORDER=Q.map(()=>{const a=[0,1,2,3];for(let i=3;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a});
-
-let st={name:"",birth:"",i:0,ans:[]};
-const app=document.getElementById("app");
-const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+var ORDER=Q.map(function(){var a=[0,1,2,3];for(var i=3;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a});
+var st={name:"",birth:"",i:0,ans:[]};
+var app=document.getElementById("app");
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function orb(k,s){var c=S[k].c;return '<div class="orb" style="width:'+s+'px;height:'+s+'px;font-size:'+Math.round(s*.42)+'px;background:radial-gradient(circle at 35% 30%,#ffffffd0,'+c+' 45%,#0b0a2a 100%);box-shadow:0 0 '+Math.round(s/2.5)+'px '+c+'">'+S[k].ic+'</div>'}
+function nms(t){return t.map(function(k){return S[k].n}).join('・')}
 
 function home(){
- const saved=localStorage.getItem("ec_result_v2");
- app.innerHTML=`<div class="card">
-  <h1>4属性で見る<br>こころ診断</h1>
-  <p class="sub">風・水・地・火 × 3つのレイヤー</p>
-  <div class="els">${KEYS.map(k=>`<div class="el"><div class="ic" style="background:${E[k].c}">${E[k].ic}</div>${E[k].n}</div>`).join("")}</div>
-  <p>あなたが「風・水・地・火」の4つのエネルギーを、どれくらい持っているかを診断します。</p>
-  <p style="margin-top:10px">「本来のあなた」「周りから見たあなた」「なりたいあなた」の3つに分けて見るので、自分でも気づいていないズレがわかります。</p>
-  <p class="sub" style="margin-top:14px">全18問・約3分</p>
-  <button class="btn" onclick="profile()">診断をはじめる</button>
-  ${saved?'<button class="btn ghost" onclick="showSaved()">前回の結果を見る</button>':''}
- </div>`;
+ var saved=localStorage.getItem(SK);
+ app.innerHTML='<div class="hero"><p class="eyebrow">SPIRIT DIAGNOSIS</p><div class="title">精霊診断</div><p class="lead">あなたに宿る、4つの精霊</p></div>'+
+ '<div class="card"><div class="orbs">'+KEYS.map(function(k){return '<div class="o">'+orb(k,54)+'<b style="color:'+S[k].c+'">'+S[k].n+'</b><small>'+S[k].t+'</small></div>'}).join('')+'</div>'+
+ '<p>人の心には、4つの精霊が宿っているといわれます。</p><p style="margin-top:8px">前へ進む風の精霊シルフ、感じる水の精霊ウンディーネ、支える大地の精霊ガイア、極める炎の精霊インフェルノ。</p><p style="margin-top:8px">「本来のあなた」「周りから見たあなた」「なりたいあなた」の3つの視点から、あなたにどの精霊が宿っているかを読み解きます。</p>'+
+ '<p class="sub" style="margin-top:16px">全18問・約3分</p><button class="btn" onclick="profile()">診断をはじめる</button>'+(saved?'<button class="btn ghost" onclick="showSaved()">前回の結果を見る</button>':'')+'</div>';
+ window.scrollTo(0,0);
 }
 function profile(){
- app.innerHTML=`<div class="card"><h2>はじめに</h2>
-  <p>結果に表示するお名前を入れてください。</p>
-  <label>お名前（ニックネーム可）<input id="nm" value="${esc(st.name)}" placeholder="例：たくみ"></label>
-  <label>生年月日（任意）<input id="bd" type="date" value="${esc(st.birth)}"></label>
-  <button class="btn" onclick="startQ()">質問にすすむ</button>
-  <p class="note">入力した内容はこの端末の中だけに保存され、外部には送信されません。</p></div>`;
+ app.innerHTML='<div class="hero"><p class="eyebrow">STEP 1</p><h1>あなたのお名前を</h1></div><div class="card"><p>結果に表示するお名前を入れてください。</p>'+
+ '<label>お名前（ニックネーム可）<input id="nm" value="'+esc(st.name)+'" placeholder="例：たくみ"></label>'+
+ '<label>生年月日（任意）<input id="bd" type="date" value="'+esc(st.birth)+'"></label>'+
+ '<button class="btn" onclick="startQ()">質問にすすむ</button><p class="note">入力した内容はこの端末の中だけに保存され、外部には送信されません。</p></div>';
 }
-function startQ(){
- st.name=document.getElementById("nm").value.trim()||"あなた";
- st.birth=document.getElementById("bd").value;
- st.i=0;st.ans=[];question();
-}
+function startQ(){st.name=document.getElementById("nm").value.trim()||"あなた";st.birth=document.getElementById("bd").value;st.i=0;st.ans=[];question()}
 function question(){
- const [ly,q,opts]=Q[st.i],L=LAYERS[ly];
- const firstOfLayer=st.i===0||Q[st.i-1][0]!==ly;
- app.innerHTML=`<div class="top"><button class="back" onclick="prev()">← 戻る</button><span>${st.i+1} / ${Q.length}</span></div>
- <div class="bar"><i style="width:${st.i/Q.length*100}%"></i></div>
- <div class="card">
-  <span class="layer">${L.n}レイヤー：${L.t}</span>
-  ${firstOfLayer?`<p class="note" style="margin:0 0 12px">ここからは「${L.d}」についての質問です。${ly==="hyo"?"人からどう見られているかを思い浮かべて答えてください。":ly==="shi"?"今の自分ではなく、なりたい自分を思い浮かべて答えてください。":"考えすぎず、直感で答えてください。"}</p>`:""}
-  <div class="q">${q}</div>
-  ${ORDER[st.i].map(k=>`<button class="opt ${st.ans[st.i]===k?"sel":""}" onclick="pick(${k})">${opts[k]}</button>`).join("")}
- </div>`;
+ var ly=Q[st.i][0],q=Q[st.i][1],opts=Q[st.i][2],L=LAYERS[ly];
+ var first=st.i===0||Q[st.i-1][0]!==ly;
+ var hint=ly==="hyo"?"人からどう見られているかを思い浮かべて答えてください。":ly==="shi"?"今の自分ではなく、なりたい自分を思い浮かべて答えてください。":"考えすぎず、直感で答えてください。";
+ app.innerHTML='<div class="top"><button class="back" onclick="prev()">← 戻る</button><span>'+(st.i+1)+' / '+Q.length+'</span></div><div class="bar"><i style="width:'+(st.i/Q.length*100)+'%"></i></div>'+
+ '<div class="card"><span class="layer" style="color:'+L.c+';border-color:'+L.c+'">'+L.n+'：'+L.t+'</span>'+
+ (first?'<p class="note" style="margin:0 0 12px">ここからは「'+L.d+'」を読み解く質問です。'+hint+'</p>':'')+
+ '<div class="q">'+q+'</div>'+ORDER[st.i].map(function(k){return '<button class="opt'+(st.ans[st.i]===k?' sel':'')+'" data-k="'+k+'" onclick="pick('+k+')">'+opts[k]+'</button>'}).join('')+'</div>';
 }
 function pick(k){
  st.ans[st.i]=k;
- document.querySelectorAll(".opt").forEach(b=>b.classList.toggle("sel",b.textContent===Q[st.i][2][k]));
- setTimeout(()=>{st.i++;st.i<Q.length?question():finish()},180);
+ document.querySelectorAll(".opt").forEach(function(b){b.classList.toggle("sel",+b.getAttribute("data-k")===k)});
+ setTimeout(function(){st.i++;if(st.i<Q.length)question();else finish()},200);
 }
 function prev(){if(st.i===0){profile();return}st.i--;question()}
-
 function calc(ans){
- const r={};
- for(const ly in LAYERS){r[ly]={wind:0,water:0,earth:0,fire:0};}
- ans.forEach((k,i)=>{r[Q[i][0]][KEYS[k]]++});
- for(const ly in r){const tot=Object.values(r[ly]).reduce((a,b)=>a+b,0)||1;for(const k of KEYS)r[ly][k]=Math.round(r[ly][k]/tot*100);}
+ var r={};for(var ly in LAYERS){r[ly]={wind:0,water:0,earth:0,fire:0}}
+ ans.forEach(function(k,i){r[Q[i][0]][KEYS[k]]++});
+ for(var l in r){var tot=0;KEYS.forEach(function(k){tot+=r[l][k]});tot=tot||1;KEYS.forEach(function(k){r[l][k]=Math.round(r[l][k]/tot*100)})}
  return r;
 }
-function topEl(o){const m=Math.max(...KEYS.map(k=>o[k]));return KEYS.filter(k=>o[k]===m)}
-function finish(){
- const res={name:st.name,birth:st.birth,r:calc(st.ans),at:Date.now()};
- localStorage.setItem("ec_result_v2",JSON.stringify(res));
- result(res);
-}
-function showSaved(){result(JSON.parse(localStorage.getItem("ec_result_v2")))}
-
+function topEl(o){var m=Math.max.apply(null,KEYS.map(function(k){return o[k]}));return KEYS.filter(function(k){return o[k]===m})}
+function finish(){var res={name:st.name,birth:st.birth,r:calc(st.ans),at:Date.now()};localStorage.setItem(SK,JSON.stringify(res));result(res)}
+function showSaved(){result(JSON.parse(localStorage.getItem(SK)))}
 function matrix(r){
  var pos={fire:"q-tl",wind:"q-tr",earth:"q-bl",water:"q-br"};
- var q=function(k){return '<div class="mq '+pos[k]+'" style="color:'+E[k].c+'"><b class="mt" style="border-color:'+E[k].c+'">'+E[k].n+'</b><div class="kw">'+E[k].kw.join('　')+'</div></div>'};
- var dots=Object.keys(LAYERS).map(function(ly,i){var o=r[ly];var x=((o.wind+o.water)-(o.fire+o.earth))/100;var y=((o.wind+o.fire)-(o.water+o.earth))/100;return '<i class="dot" style="left:'+(50+x*40+(i-1)*3)+'%;top:'+(50-y*40)+'%;background:'+LC[ly]+'">'+LAYERS[ly].n.charAt(0)+'</i>'}).join('');
- var lg=Object.keys(LAYERS).map(function(ly){return '<span><i style="background:'+LC[ly]+'">'+LAYERS[ly].n.charAt(0)+'</i>'+LAYERS[ly].t+'</span>'}).join('');
- return '<div class="mxw"><div class="ax t">男性性／強さ</div><div class="ax b">女性性／優しさ</div><div class="ax l">内向<br>／<br>安定</div><div class="ax r">外向<br>／<br>自由</div><div class="mx">'+q('fire')+q('wind')+q('earth')+q('water')+dots+'</div></div><div class="lg">'+lg+'</div>';
+ var q=function(k){return '<div class="mq '+pos[k]+'" style="color:'+S[k].c+'"><b class="mt" style="border-color:'+S[k].c+'">'+S[k].n+'</b><div class="kw">'+S[k].kw.join('　')+'</div></div>'};
+ var dots=Object.keys(LAYERS).map(function(ly,i){var o=r[ly];var x=((o.wind+o.water)-(o.fire+o.earth))/100;var y=((o.wind+o.fire)-(o.water+o.earth))/100;return '<i class="dot" style="left:'+(50+x*40+(i-1)*3)+'%;top:'+(50-y*40)+'%;background:'+LAYERS[ly].c+'">'+LAYERS[ly].s+'</i>'}).join('');
+ var lg=Object.keys(LAYERS).map(function(ly){return '<span><i style="background:'+LAYERS[ly].c+'">'+LAYERS[ly].s+'</i>'+LAYERS[ly].t+'</span>'}).join('');
+ return '<div class="mxw"><div class="ax t">動の力（陽）</div><div class="ax b">静の力（陰）</div><div class="ax l">内なる世界</div><div class="ax r">外の世界</div><div class="mx">'+q('fire')+q('wind')+q('earth')+q('water')+dots+'</div></div><div class="lg">'+lg+'</div>';
 }
 function compare(r){
- const s=topEl(r.sen),h=topEl(r.hyo),v=topEl(r.shi);
- const nm=a=>a.map(k=>E[k].n).join("・");
- let t=[];
- if(s.some(k=>h.includes(k))) t.push(`本来のあなた（${nm(s)}）が、そのまま周りにも伝わっています。自分らしさを自然に出せている状態です。`);
- else t.push(`本来のあなたは「${nm(s)}」なのに、周りからは「${nm(h)}」として見られています。知らないうちに、役割に合わせて無理をしているかもしれません。`);
- if(v.some(k=>s.includes(k))) t.push(`なりたい姿（${nm(v)}）は、もともと持っている力の延長にあります。今の強みを素直に伸ばすことが近道です。`);
- else t.push(`なりたい姿は「${nm(v)}」。今はまだ眠っている力を、これから育てていきたい気持ちが表れています。`);
+ var s=topEl(r.sen),h=topEl(r.hyo),v=topEl(r.shi),t=[];
+ if(s.some(function(k){return h.indexOf(k)>=0}))t.push('あなたの魂に宿る精霊（'+nms(s)+'）が、そのまま周りにも伝わっています。自分らしさを自然に出せている状態です。');
+ else t.push('あなたの魂には「'+nms(s)+'」が宿っているのに、周りには「'+nms(h)+'」を纏っているように見えています。知らないうちに、役割に合わせて無理をしているかもしれません。');
+ if(v.some(function(k){return s.indexOf(k)>=0}))t.push('あなたを導く精霊（'+nms(v)+'）は、魂にもともと宿っている精霊です。今の強みを素直に伸ばすことが、なりたい自分への近道です。');
+ else t.push('あなたを導く精霊は「'+nms(v)+'」。今はまだ眠っている力を、これから目覚めさせていきたい気持ちが表れています。');
  return t;
 }
 function result(res){
- var r=res.r,name=res.name,lys=Object.keys(LAYERS);
- var nm=function(t){return t.map(function(k){return E[k].n}).join('・')};
- var summary=lys.map(function(ly){var t=topEl(r[ly]).slice(0,2);return '<div class="sm"><span style="color:'+LC[ly]+'">'+LAYERS[ly].t+'</span><b style="color:'+E[t[0]].c+'">'+nm(t)+'タイプ</b></div>'}).join('');
+ var r=res.r,lys=Object.keys(LAYERS),m0=topEl(r.sen)[0];
+ var summary=lys.map(function(ly){var t=topEl(r[ly]).slice(0,2);return '<div class="sm"><span style="color:'+LAYERS[ly].c+'">'+LAYERS[ly].n+'<br><small style="color:#b9b0d6">'+LAYERS[ly].t+'</small></span><b style="color:'+S[t[0]].c+'">'+nms(t)+'</b></div>'}).join('');
  var blocks=lys.map(function(ly){
-  var L=LAYERS[ly],t=topEl(r[ly]).slice(0,2),m=E[t[0]];
-  var bars=KEYS.map(function(k){return '<div><span>'+E[k].n+'</span><em><i style="width:'+r[ly][k]+'%;background:'+E[k].c+'"></i></em><small>'+r[ly][k]+'%</small></div>'}).join('');
-  var desc=t.map(function(k){return '<div class="desc" style="border-color:'+E[k].c+'"><p>'+E[k].d+'</p><h3 style="color:'+E[k].c+'">＜この属性と強く関係する行動や環境＞</h3><p>'+E[k].env+'</p></div>'}).join('');
-  return '<div class="card"><span class="layer" style="background:'+LC[ly]+'22;color:'+LC[ly]+'">'+L.n+'レイヤー：'+L.t+'</span><div class="res-el"><div class="ic" style="background:'+m.c+'">'+m.n+'</div><div><b>'+nm(t)+'</b>タイプ<br><small>'+t.map(function(k){return E[k].k}).join(' / ')+'</small></div></div><div class="rows">'+bars+'</div>'+desc+'</div>';
+  var L=LAYERS[ly],t=topEl(r[ly]).slice(0,2),m=S[t[0]];
+  var bars=KEYS.map(function(k){return '<div><span style="color:'+S[k].c+'">'+S[k].n+'</span><em><i style="width:'+r[ly][k]+'%;background:'+S[k].c+'"></i></em><small>'+r[ly][k]+'%</small></div>'}).join('');
+  var desc=t.map(function(k){return '<div class="desc" style="border-color:'+S[k].c+'"><p>'+S[k].d+'</p><h3 style="color:'+S[k].c+'">✦ '+S[k].n+'の力を高めるには</h3><p>'+S[k].env+'</p></div>'}).join('');
+  return '<div class="card"><span class="layer" style="color:'+L.c+';border-color:'+L.c+'">'+L.n+'：'+L.t+'</span><div class="res-el">'+orb(t[0],58)+'<div><b style="color:'+m.c+'">'+nms(t)+'</b><br><small>'+t.map(function(k){return S[k].t+'・'+S[k].k}).join(' / ')+'</small></div></div><div class="rows">'+bars+'</div>'+desc+'</div>';
  }).join('');
- var table=KEYS.map(function(k){return '<div class="trow"><div class="tl" style="background:'+E[k].c+'">'+E[k].n+'</div><div class="tr"><p>'+E[k].d+'</p><h3>＜この属性と強く関係する行動や環境＞</h3><p>'+E[k].env+'</p></div></div>'}).join('');
- var cmp=compare(r);
- app.innerHTML='<div class="card" style="text-align:center"><p class="sub">診断結果</p><h1>'+esc(name)+'さんの<br>エネルギーバランス</h1><div class="sms">'+summary+'</div></div>'+
- '<div class="card"><h2>属性マトリクス</h2><p class="note" style="margin:0">3つのレイヤーで、あなたがどの位置にいるかを表しています。</p>'+matrix(r)+'</div>'+
+ var table=KEYS.map(function(k){return '<div class="trow"><div class="tl" style="color:'+S[k].c+'">'+orb(k,34)+S[k].n+'</div><div class="tr"><h3 style="color:'+S[k].c+';margin-top:0">'+S[k].t+'・'+S[k].k+'</h3><p>'+S[k].d+'</p><h3 style="color:'+S[k].c+'">✦ 力を高めるには</h3><p>'+S[k].env+'</p></div></div>'}).join('');
+ var cta=LINE_URL?'<a class="btn line" href="'+LINE_URL+'" target="_blank" rel="noopener">LINEで詳しい鑑定を受け取る</a>':'';
+ app.innerHTML='<div class="hero"><p class="eyebrow">YOUR SPIRIT</p><h1>'+esc(res.name)+'さんに<br>宿る精霊</h1><div class="main">'+orb(m0,110)+'<div class="nm" style="color:'+S[m0].c+'">'+S[m0].n+'</div><div class="tt">'+S[m0].t+'・'+S[m0].k+'</div></div></div>'+
+ '<div class="card"><h2>3つの精霊</h2><div class="sms">'+summary+'</div></div>'+
+ '<div class="card"><h2>精霊の星図</h2><p class="note" style="margin:0">3つの視点で、あなたがどの精霊の領域にいるかを表しています。</p>'+matrix(r)+'</div>'+
  blocks+
- '<div class="card"><h2>3つのレイヤーから見えること</h2>'+cmp.map(function(x){return '<p style="margin-bottom:10px">'+x+'</p>'}).join('')+'</div>'+
- '<div class="card"><h2>各属性の説明</h2>'+table+'</div>'+
- '<div class="card"><h2>もっと詳しく知りたい方へ</h2><p>この結果は簡易版です。公式LINEでは、より詳しい診断レポートや、悩みに合わせたアドバイスをご案内しています。</p><a class="btn line" href="'+LINE_URL+'" target="_blank" rel="noopener">LINEで詳しい診断を受け取る</a><button class="btn ghost" onclick="share()">結果をコピーしてシェア</button><button class="btn ghost" onclick="home()">トップにもどる</button><p class="note">この診断は自己理解のためのもので、医学的な診断ではありません。</p></div>';
+ '<div class="card"><h2>3つの視点から見えること</h2>'+compare(r).map(function(x){return '<p style="margin-bottom:10px">'+x+'</p>'}).join('')+'</div>'+
+ '<div class="card"><h2>4つの精霊</h2>'+table+'</div>'+
+ '<div class="card"><h2>結果をシェアする</h2>'+cta+'<button class="btn" onclick="share()">結果をシェアする</button><button class="btn ghost" onclick="home()">トップにもどる</button><p class="note">この診断は自己理解を楽しむためのもので、医学的・心理学的な診断ではありません。</p></div>';
  window.scrollTo(0,0);
 }
 function share(){
- const res=JSON.parse(localStorage.getItem("ec_result_v2")),r=res.r;
- const t=`4属性こころ診断の結果\n本来のわたし：${topEl(r.sen).map(k=>E[k].n).join("・")}\n周りから見たわたし：${topEl(r.hyo).map(k=>E[k].n).join("・")}\nなりたいわたし：${topEl(r.shi).map(k=>E[k].n).join("・")}\n${location.href}`;
- (navigator.share?navigator.share({text:t}):navigator.clipboard.writeText(t).then(()=>alert("コピーしました"))).catch(()=>{});
+ var res=JSON.parse(localStorage.getItem(SK)),r=res.r;
+ var t='精霊診断の結果\n魂の精霊：'+nms(topEl(r.sen))+'\n纏う精霊：'+nms(topEl(r.hyo))+'\n導く精霊：'+nms(topEl(r.shi))+'\n'+location.href.split('?')[0];
+ var p=navigator.share?navigator.share({text:t}):navigator.clipboard.writeText(t).then(function(){alert("コピーしました")});
+ if(p&&p.catch)p.catch(function(){});
 }
 home();
 if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(function(){})}

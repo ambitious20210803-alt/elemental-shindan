@@ -1,11 +1,11 @@
 {
- "name": "4属性 こころ診断",
- "short_name": "こころ診断",
+ "name": "精霊診断",
+ "short_name": "精霊診断",
  "start_url": "./",
  "scope": "./",
  "display": "standalone",
- "background_color": "#2b2350",
- "theme_color": "#2b2350",
+ "background_color": "#070a1f",
+ "theme_color": "#070a1f",
  "lang": "ja",
  "icons": [
   {
