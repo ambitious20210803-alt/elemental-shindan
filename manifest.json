@@ -1,6 +1,6 @@
 {
- "name": "精霊診断",
- "short_name": "精霊診断",
+ "name": "エレメンタル診断",
+ "short_name": "エレメンタル",
  "start_url": "./",
  "scope": "./",
  "display": "standalone",

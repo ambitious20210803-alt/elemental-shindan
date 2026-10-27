@@ -2,23 +2,23 @@
 <html lang="ja"><head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
 <meta name="theme-color" content="#070a1f">
-<title>精霊診断｜あなたに宿る4つの精霊</title>
+<title>エレメンタル診断｜あなたに宿る4つの精霊</title>
 <meta name="description" content="シルフ・ウンディーネ・ガイア・インフェルノ。4つの精霊×3つの視点で、本来のあなた・周りから見たあなた・なりたいあなたを診断します。全18問・約3分。">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="img/icon-192.png">
 <link rel="apple-touch-icon" href="img/icon-180.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="精霊診断">
+<meta name="apple-mobile-web-app-title" content="エレメンタル診断">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://ambitious20210803-alt.github.io/seirei-shindan/">
-<meta property="og:title" content="精霊診断｜あなたに宿る4つの精霊">
+<meta property="og:url" content="https://ambitious20210803-alt.github.io/elemental-shindan/">
+<meta property="og:title" content="エレメンタル診断｜あなたに宿る4つの精霊">
 <meta property="og:description" content="シルフ・ウンディーネ・ガイア・インフェルノ。あなたに宿る精霊はどれ？全18問・約3分の無料診断。">
-<meta property="og:image" content="https://ambitious20210803-alt.github.io/seirei-shindan/img/ogp.png">
+<meta property="og:image" content="https://ambitious20210803-alt.github.io/elemental-shindan/img/ogp.png">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://ambitious20210803-alt.github.io/seirei-shindan/img/ogp.png">
+<meta name="twitter:image" content="https://ambitious20210803-alt.github.io/elemental-shindan/img/ogp.png">
 <style>
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 body{font-family:"Hiragino Mincho ProN","Yu Mincho","Noto Serif JP","Noto Serif CJK JP",serif;color:#f1ead8;background:radial-gradient(ellipse at 50% -10%,#3a2a7a 0%,#141038 45%,#070a1f 100%) fixed;min-height:100vh;touch-action:manipulation}
@@ -26,7 +26,7 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.8;bac
 .wrap{position:relative;max-width:480px;margin:0 auto;padding:20px 16px 48px}
 .hero{text-align:center;padding:28px 0 18px}
 .eyebrow{letter-spacing:.35em;font-size:11px;color:#d8b86a}
-.title{font-size:44px;letter-spacing:.12em;margin:8px 0;background:linear-gradient(180deg,#fff6d6,#d8b86a 70%,#a07c32);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 0 30px rgba(216,184,106,.25)}
+.title{font-size:38px;letter-spacing:.06em;margin:8px 0;background:linear-gradient(180deg,#fff6d6,#d8b86a 70%,#a07c32);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 0 30px rgba(216,184,106,.25)}
 .lead{font-size:15px;color:#cfc6e8;letter-spacing:.1em}
 .card{background:rgba(22,18,58,.72);border:1px solid rgba(216,184,106,.4);border-radius:18px;padding:22px 18px;margin-bottom:16px;box-shadow:0 0 30px rgba(110,90,255,.15),inset 0 0 20px rgba(216,184,106,.05);backdrop-filter:blur(6px)}
 h1{font-size:24px;text-align:center;line-height:1.5;color:#fff6d6}
@@ -96,7 +96,7 @@ label{display:block;font-size:14px;margin-top:14px;color:#e8cf8a}
 <script>
 // ===== 設定 =====
 var LINE_URL=""; // 公式LINEのURLを入れるとボタンが出ます
-var SK="seirei_result_v1";
+var SK="elemental_result_v1";
 
 var S={
  wind:{n:"シルフ",el:"風",t:"疾風の精霊",c:"#4fe0a8",ic:"🌪️",k:"前へ進む力",
@@ -152,7 +152,7 @@ function nms(t){return t.map(function(k){return S[k].n}).join('・')}
 
 function home(){
  var saved=localStorage.getItem(SK);
- app.innerHTML='<div class="hero"><p class="eyebrow">SPIRIT DIAGNOSIS</p><div class="title">精霊診断</div><p class="lead">あなたに宿る、4つの精霊</p></div>'+
+ app.innerHTML='<div class="hero"><p class="eyebrow">ELEMENTAL DIAGNOSIS</p><div class="title">エレメンタル診断</div><p class="lead">あなたに宿る、4つの精霊</p></div>'+
  '<div class="card"><div class="orbs">'+KEYS.map(function(k){return '<div class="o">'+orb(k,54)+'<b style="color:'+S[k].c+'">'+S[k].n+'</b><small>'+S[k].t+'</small></div>'}).join('')+'</div>'+
  '<p>人の心には、4つの精霊が宿っているといわれます。</p><p style="margin-top:8px">前へ進む風の精霊シルフ、感じる水の精霊ウンディーネ、支える大地の精霊ガイア、極める炎の精霊インフェルノ。</p><p style="margin-top:8px">「本来のあなた」「周りから見たあなた」「なりたいあなた」の3つの視点から、あなたにどの精霊が宿っているかを読み解きます。</p>'+
  '<p class="sub" style="margin-top:16px">全18問・約3分</p><button class="btn" onclick="profile()">診断をはじめる</button>'+(saved?'<button class="btn ghost" onclick="showSaved()">前回の結果を見る</button>':'')+'</div>';
@@ -226,7 +226,7 @@ function result(res){
 }
 function share(){
  var res=JSON.parse(localStorage.getItem(SK)),r=res.r;
- var t='精霊診断の結果\n魂の精霊：'+nms(topEl(r.sen))+'\n纏う精霊：'+nms(topEl(r.hyo))+'\n導く精霊：'+nms(topEl(r.shi))+'\n'+location.href.split('?')[0];
+ var t='エレメンタル診断の結果\n魂の精霊：'+nms(topEl(r.sen))+'\n纏う精霊：'+nms(topEl(r.hyo))+'\n導く精霊：'+nms(topEl(r.shi))+'\n'+location.href.split('?')[0];
  var p=navigator.share?navigator.share({text:t}):navigator.clipboard.writeText(t).then(function(){alert("コピーしました")});
  if(p&&p.catch)p.catch(function(){});
 }
