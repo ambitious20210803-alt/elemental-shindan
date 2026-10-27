@@ -152,7 +152,7 @@ function nms(t){return t.map(function(k){return S[k].n}).join('・')}
 
 function home(){
  var saved=localStorage.getItem(SK);
- app.innerHTML='<div class="hero"><p class="eyebrow">ELEMENTAL DIAGNOSIS</p><div class="title">エレメンタル診断</div><p class="lead">あなたに宿る、4つの精霊</p></div>'+
+ app.innerHTML='<div class="hero"><p class="eyebrow">ELEMENTAL DIAGNOSIS</p><div class="title">エレメンタル診断</div><p class="lead">あなたに宿る精霊は？</p></div>'+
  '<div class="card"><div class="orbs">'+KEYS.map(function(k){return '<div class="o">'+orb(k,54)+'<b style="color:'+S[k].c+'">'+S[k].n+'</b><small>'+S[k].t+'</small></div>'}).join('')+'</div>'+
  '<p>人の心には、4つの精霊が宿っているといわれます。</p><p style="margin-top:8px">前へ進む風の精霊シルフ、感じる水の精霊ウンディーネ、支える大地の精霊ガイア、極める炎の精霊インフェルノ。</p><p style="margin-top:8px">「本来のあなた」「周りから見たあなた」「なりたいあなた」の3つの視点から、あなたにどの精霊が宿っているかを読み解きます。</p>'+
  '<p class="sub" style="margin-top:16px">全18問・約3分</p><button class="btn" onclick="profile()">診断をはじめる</button>'+(saved?'<button class="btn ghost" onclick="showSaved()">前回の結果を見る</button>':'')+'</div>';
