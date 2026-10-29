@@ -3,7 +3,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
 <meta name="theme-color" content="#070a1f">
 <title>エレメンタル診断｜あなたに宿る4つの精霊</title>
-<meta name="description" content="シルフ・ウンディーネ・ガイア・インフェルノ。4つの精霊×3つの視点で、本来のあなた・周りから見たあなた・なりたいあなたを診断します。全18問・約3分。">
+<meta name="description" content="シルフ・ウンディーネ・ガイア・インフェルノ。4つの精霊×3つの視点で、本来のあなた・周りから見たあなた・なりたいあなたを診断します。全22問・約4分。">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="img/icon-192.png">
 <link rel="apple-touch-icon" href="img/icon-180.png">
@@ -14,7 +14,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://ambitious20210803-alt.github.io/elemental-shindan/">
 <meta property="og:title" content="エレメンタル診断｜あなたに宿る4つの精霊">
-<meta property="og:description" content="シルフ・ウンディーネ・ガイア・インフェルノ。あなたに宿る精霊はどれ？全18問・約3分の無料診断。">
+<meta property="og:description" content="シルフ・ウンディーネ・ガイア・インフェルノ。あなたに宿る精霊はどれ？全22問・約4分の無料診断。">
 <meta property="og:image" content="https://ambitious20210803-alt.github.io/elemental-shindan/img/ogp.png">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -92,6 +92,14 @@ label{display:block;font-size:14px;margin-top:14px;color:#e8cf8a}
 .tl{width:64px;flex-shrink:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-size:11px;font-weight:bold;text-align:center;padding:8px 2px;background:rgba(255,255,255,.04)}
 .tr{padding:10px 12px;flex:1}
 .tr p{font-size:13px}
+.card.dark{background:rgba(34,6,26,.82);border-color:rgba(255,77,109,.55);box-shadow:0 0 30px rgba(255,40,90,.18)}
+.dtotal{text-align:center;margin:14px 0 4px}
+.dtotal small{display:block;font-size:13px;color:#cfc6e8}
+.dtotal b{display:block;font-size:46px;line-height:1.2}
+.badge{display:inline-block;color:#fff;font-size:13px;font-weight:bold;padding:4px 14px;border-radius:20px}
+.dm{position:relative}
+.dm:after{content:"";position:absolute;left:60%;top:0;bottom:0;border-left:2px dashed #fff}
+.btn.x{background:#000;color:#fff;box-shadow:none;border:1px solid #444}
 </style></head><body><div class="wrap" id="app"></div>
 <script>
 // ===== 設定 =====
@@ -143,6 +151,22 @@ var Q=[
  ["shi","もっと伸ばしたい力は？",["行動力と、やり切る力","感性と、人に共感する力","計画力と、まとめる力","考える力と、深める力"]],
  ["shi","理想の休日の過ごし方は？",["新しいことに挑戦して、刺激をもらう","思いつくまま、気ままに過ごす","大切な人と、ゆっくり過ごす","ひとりで好きなことを掘り下げる"]]
 ];
+
+var DQ=[
+ ["wind","思い通りに進まないと、相手を責めたり、言い負かしたくなる"],
+ ["water","寂しさや不安を、買い物・お酒・恋愛・SNSなどで埋めてしまう"],
+ ["earth","ルールや常識から外れた人が許せず、正しさを押し付けたくなる"],
+ ["fire","「どうせ誰もわかってくれない」と、人と関わるのをやめたくなる"]
+];
+var FREQ=[["よくある",3],["ときどきある",2],["たまにある",1],["ほとんどない",0]];
+var TOTAL=Q.length+DQ.length;
+var DARK={
+ wind:{n:"嵐",d:"前へ進む力が暴走すると、勝つことしか見えなくなります。思い通りにならない相手を責め、言い負かし、周りを味方と敵に分けはじめます。人を引っ張っていたはずが、気づくと人を押しのけて進んでいる状態です。",h:"勝ち負けから一度降りて、結果ではなく、一緒に進んでくれた人に目を向けてください。大事なことはひと晩おいてから決める、言い返す前に3秒待つ。それだけで嵐は弱まります。"},
+ water:{n:"濁流",d:"感じる力が暴走すると、心の揺れを自分で受け止めきれなくなります。寂しさや不安を、買い物、お酒、恋愛、SNSなど外の何かで埋めようとして、やめたいのにやめられなくなります。気分の波に、周りの人まで巻き込んでしまうこともあります。",h:"揺れている自分を責めずに、まず言葉にしてください。紙に書く、信頼できる人に話す。何かで埋める前に、心がほんとうに欲しいものを確かめると、水はまた澄んでいきます。"},
+ earth:{n:"石化",d:"支える力が暴走すると、「こうあるべき」に心が固まってしまいます。自分の本音を押し殺し、ルールや常識から外れる人が許せなくなり、家族や身近な人にも正しさを押し付けはじめます。守っているつもりが、縛っている状態です。",h:"「べき」を「したい」に言い換えてみてください。ルールより先に、自分と相手の気持ちを聞くこと。小さな予定外を楽しめるようになると、大地はまたやわらかくなります。"},
+ fire:{n:"灰",d:"極める力が暴走すると、炎は内側だけで燃え、やがて灰になります。「どうせ誰もわかってくれない」と人を信用しなくなり、自分の世界に閉じこもって、外とのつながりを断ってしまいます。",h:"わかってもらうことより、ひとりでいいので、本音を話せる相手を持ってください。考えていることを外に出す、誰かに教えてみる。炎は外の空気に触れると、また大きく燃え上がります。"}
+};
+var BORDER=60;
 var ORDER=Q.map(function(){var a=[0,1,2,3];for(var i=3;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a});
 var st={name:"",birth:"",i:0,ans:[]};
 var app=document.getElementById("app");
@@ -155,7 +179,7 @@ function home(){
  app.innerHTML='<div class="hero"><p class="eyebrow">ELEMENTAL DIAGNOSIS</p><div class="title">エレメンタル診断</div><p class="lead">あなたに宿る精霊は？</p></div>'+
  '<div class="card"><div class="orbs">'+KEYS.map(function(k){return '<div class="o">'+orb(k,54)+'<b style="color:'+S[k].c+'">'+S[k].n+'</b><small>'+S[k].t+'</small></div>'}).join('')+'</div>'+
  '<p>人の心には、4つの精霊が宿っているといわれます。</p><p style="margin-top:8px">前へ進む風の精霊シルフ、感じる水の精霊ウンディーネ、支える大地の精霊ガイア、極める炎の精霊インフェルノ。</p><p style="margin-top:8px">「本来のあなた」「周りから見たあなた」「なりたいあなた」の3つの視点から、あなたにどの精霊が宿っているかを読み解きます。</p>'+
- '<p class="sub" style="margin-top:16px">全18問・約3分</p><button class="btn" onclick="profile()">診断をはじめる</button>'+(saved?'<button class="btn ghost" onclick="showSaved()">前回の結果を見る</button>':'')+'</div>';
+ '<p class="sub" style="margin-top:16px">全22問・約4分</p><button class="btn" onclick="profile()">診断をはじめる</button>'+(saved?'<button class="btn ghost" onclick="showSaved()">前回の結果を見る</button>':'')+'</div>';
  window.scrollTo(0,0);
 }
 function profile(){
@@ -164,12 +188,13 @@ function profile(){
  '<label>生年月日（任意）<input id="bd" type="date" value="'+esc(st.birth)+'"></label>'+
  '<button class="btn" onclick="startQ()">質問にすすむ</button><p class="note">入力した内容はこの端末の中だけに保存され、外部には送信されません。</p></div>';
 }
-function startQ(){st.name=document.getElementById("nm").value.trim()||"あなた";st.birth=document.getElementById("bd").value;st.i=0;st.ans=[];question()}
+function startQ(){st.name=document.getElementById("nm").value.trim()||"あなた";st.birth=document.getElementById("bd").value;st.i=0;st.ans=[];st.dark=[];question()}
 function question(){
+ if(st.i>=Q.length){darkQ();return}
  var ly=Q[st.i][0],q=Q[st.i][1],opts=Q[st.i][2],L=LAYERS[ly];
  var first=st.i===0||Q[st.i-1][0]!==ly;
  var hint=ly==="hyo"?"人からどう見られているかを思い浮かべて答えてください。":ly==="shi"?"今の自分ではなく、なりたい自分を思い浮かべて答えてください。":"考えすぎず、直感で答えてください。";
- app.innerHTML='<div class="top"><button class="back" onclick="prev()">← 戻る</button><span>'+(st.i+1)+' / '+Q.length+'</span></div><div class="bar"><i style="width:'+(st.i/Q.length*100)+'%"></i></div>'+
+ app.innerHTML='<div class="top"><button class="back" onclick="prev()">← 戻る</button><span>'+(st.i+1)+' / '+TOTAL+'</span></div><div class="bar"><i style="width:'+(st.i/TOTAL*100)+'%"></i></div>'+
  '<div class="card"><span class="layer" style="color:'+L.c+';border-color:'+L.c+'">'+L.n+'：'+L.t+'</span>'+
  (first?'<p class="note" style="margin:0 0 12px">ここからは「'+L.d+'」を読み解く質問です。'+hint+'</p>':'')+
  '<div class="q">'+q+'</div>'+ORDER[st.i].map(function(k){return '<button class="opt'+(st.ans[st.i]===k?' sel':'')+'" data-k="'+k+'" onclick="pick('+k+')">'+opts[k]+'</button>'}).join('')+'</div>';
@@ -177,7 +202,7 @@ function question(){
 function pick(k){
  st.ans[st.i]=k;
  document.querySelectorAll(".opt").forEach(function(b){b.classList.toggle("sel",+b.getAttribute("data-k")===k)});
- setTimeout(function(){st.i++;if(st.i<Q.length)question();else finish()},200);
+ setTimeout(function(){st.i++;if(st.i<TOTAL)question();else finish()},200);
 }
 function prev(){if(st.i===0){profile();return}st.i--;question()}
 function calc(ans){
@@ -187,8 +212,8 @@ function calc(ans){
  return r;
 }
 function topEl(o){var m=Math.max.apply(null,KEYS.map(function(k){return o[k]}));return KEYS.filter(function(k){return o[k]===m})}
-function finish(){var res={name:st.name,birth:st.birth,r:calc(st.ans),at:Date.now()};localStorage.setItem(SK,JSON.stringify(res));result(res)}
-function showSaved(){result(JSON.parse(localStorage.getItem(SK)))}
+function finish(){var r0=calc(st.ans);var res={name:st.name,birth:st.birth,r:r0,d:calcDark(r0,st.dark||[]),at:Date.now()};localStorage.setItem(SK,JSON.stringify(res));history.replaceState(null,'',location.pathname+'?r='+encodeRes(res));result(res)}
+function showSaved(){var res=JSON.parse(localStorage.getItem(SK));history.replaceState(null,'',location.pathname+'?r='+encodeRes(res));result(res)}
 function matrix(r){
  var pos={fire:"q-tl",wind:"q-tr",earth:"q-bl",water:"q-br"};
  var q=function(k){return '<div class="mq '+pos[k]+'" style="color:'+S[k].c+'"><b class="mt" style="border-color:'+S[k].c+'">'+S[k].n+'</b><div class="kw">'+S[k].kw.join('　')+'</div></div>'};
@@ -204,8 +229,53 @@ function compare(r){
  else t.push('あなたを導く精霊は「'+nms(v)+'」。今はまだ眠っている力を、これから目覚めさせていきたい気持ちが表れています。');
  return t;
 }
-function result(res){
- var r=res.r,lys=Object.keys(LAYERS),m0=topEl(r.sen)[0];
+function darkQ(){
+ var j=st.i-Q.length;
+ app.innerHTML='<div class="top"><button class="back" onclick="prev()">← 戻る</button><span>'+(st.i+1)+' / '+TOTAL+'</span></div><div class="bar"><i style="width:'+(st.i/TOTAL*100)+'%"></i></div>'+
+ '<div class="card dark"><span class="layer" style="color:#ff5a7a;border-color:#ff5a7a">暗黒面の兆し：最近のあなた</span>'+
+ (j===0?'<p class="note" style="margin:0 0 12px">最後に、ここ1か月ほどの心の状態についてうかがいます。正直に答えるほど、結果が正確になります。</p>':'')+
+ '<div class="q">'+DQ[j][1]+'</div>'+FREQ.map(function(f){return '<button class="opt'+(st.dark[j]===f[1]?' sel':'')+'" data-v="'+f[1]+'" onclick="pickD('+f[1]+')">'+f[0]+'</button>'}).join('')+'</div>';
+}
+function pickD(v){
+ var j=st.i-Q.length;st.dark[j]=v;
+ document.querySelectorAll(".opt").forEach(function(b){b.classList.toggle("sel",+b.getAttribute("data-v")===v)});
+ setTimeout(function(){st.i++;if(st.i<TOTAL)question();else finish()},200);
+}
+function calcDark(r,sig){
+ var d={};
+ KEYS.forEach(function(k,i){
+  var g1=Math.abs(r.sen[k]-r.hyo[k]),g2=Math.abs(r.shi[k]-r.sen[k]);
+  var gap=Math.min(50,Math.round(g1*0.8+g2*0.3));
+  var s=Math.round((sig[i]||0)/3*50);
+  d[k]=Math.min(100,gap+s);
+ });
+ return d;
+}
+function darkTotal(d){var v=KEYS.map(function(k){return d[k]||0});var mx=Math.max.apply(null,v);var avg=v.reduce(function(a,b){return a+b},0)/4;return Math.round(mx*0.6+avg*0.4)}
+function dLevel(v){return v>=BORDER?["暴走","#ff4d6d"]:v>=30?["兆しあり","#ffb15a"]:["穏やか","#7ad7a8"]}
+function darkCard(d,shared,name){
+ var tot=darkTotal(d),lv=dLevel(tot),over=tot>=BORDER;
+ var top=KEYS.slice().sort(function(a,b){return d[b]-d[a]})[0];
+ var who=shared?esc(name)+'さん':'あなた';
+ var msg=over?'暗黒面がボーダーライン（60%）を超えています。精霊が暴走しやすい状態です。':tot>=30?'暗黒面の兆しが少し見えています。疲れがたまる前に、早めにケアしましょう。':'暗黒面はほとんど目覚めていません。精霊の力を、まっすぐ使えている状態です。';
+ var rows=KEYS.map(function(k){var l=dLevel(d[k]);return '<div><span style="color:'+S[k].c+'">'+S[k].n+'</span><em class="dm"><i style="width:'+d[k]+'%;background:'+l[1]+'"></i></em><small style="color:'+l[1]+'">'+d[k]+'%</small></div>'}).join('');
+ return '<div class="card dark"><h2>精霊の暗黒面</h2>'+
+ '<p class="note" style="margin:0 0 6px">精霊の力は、苦手なことを頑張りすぎたり、得意なことを抑え込みすぎたりすると、暗い方向へ暴走しはじめます。ボーダーラインは60%です。</p>'+
+ '<div class="dtotal"><small>'+who+'の暗黒面 総合値</small><b style="color:'+lv[1]+'">'+tot+'%</b><span class="badge" style="background:'+(over?'#ff4d6d':'#2e7d5b')+'">'+(over?'ボーダーライン超え':'ボーダーライン以内')+'</span></div>'+
+ '<p style="margin:10px 0">'+msg+'</p>'+
+ '<div class="rows drows">'+rows+'</div><p class="note" style="margin-top:4px">点線がボーダーライン（60%）です。</p>'+
+ '<div class="desc" style="border-color:#ff4d6d"><h3 style="color:#ff8fa3;margin-top:0">✦ 最も気をつけたい暗黒面：'+S[top].n+'の暗黒面「'+DARK[top].n+'」（'+d[top]+'%）</h3><p>'+DARK[top].d+'</p><h3 style="color:#ff8fa3">✦ 鎮めるには</h3><p>'+DARK[top].h+'</p></div></div>';
+}
+function hsh(s){var h=5381;s+='|elemental-2026';for(var i=0;i<s.length;i++){h=((h<<5)+h+s.charCodeAt(i))|0}return (h>>>0).toString(36)}
+function encodeRes(res){var a=[res.name];Object.keys(LAYERS).forEach(function(ly){KEYS.forEach(function(k){a.push(res.r[ly][k])})});KEYS.forEach(function(k){a.push(res.d?res.d[k]:0)});var j=JSON.stringify(a);return btoa(unescape(encodeURIComponent(j))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'')+'.'+hsh(j)}
+function decodeRes(code){try{var p=code.split('.');var b=p[0].replace(/-/g,'+').replace(/_/g,'/');while(b.length%4)b+='=';var j=decodeURIComponent(escape(atob(b)));var a=JSON.parse(j);var res={name:String(a[0]).slice(0,30),r:{},d:{}};var i=1;Object.keys(LAYERS).forEach(function(ly){res.r[ly]={};KEYS.forEach(function(k){res.r[ly][k]=+a[i++]||0})});KEYS.forEach(function(k){res.d[k]=Math.min(100,+a[i++]||0)});res.bad=hsh(j)!==p[1];return res}catch(e){return null}}
+function shareUrl(res){return location.origin+location.pathname+'?r='+encodeRes(res)}
+function shareText(res){var r=res.r;return 'エレメンタル診断の結果\n魂の精霊：'+nms(topEl(r.sen))+'\n纏う精霊：'+nms(topEl(r.hyo))+'\n導く精霊：'+nms(topEl(r.shi))+(res.d?'\n暗黒面：'+darkTotal(res.d)+'%':'')+'\n'}
+function copyLink(){var u=shareUrl(window.__res);var done=function(){alert("結果のURLをコピーしました")};if(navigator.clipboard)navigator.clipboard.writeText(shareText(window.__res)+u).then(done).catch(function(){prompt("このURLをコピーしてください",u)});else prompt("このURLをコピーしてください",u)}
+function share(){var res=window.__res;if(navigator.share)navigator.share({text:shareText(res),url:shareUrl(res)}).catch(function(){});else copyLink()}
+function startFresh(){history.replaceState(null,'',location.pathname);home()}
+function result(res,shared){
+ var r=res.r,lys=Object.keys(LAYERS),m0=topEl(r.sen)[0];window.__res=res;
  var summary=lys.map(function(ly){var t=topEl(r[ly]).slice(0,2);return '<div class="sm"><span style="color:'+LAYERS[ly].c+'">'+LAYERS[ly].n+'<br><small style="color:#b9b0d6">'+LAYERS[ly].t+'</small></span><b style="color:'+S[t[0]].c+'">'+nms(t)+'</b></div>'}).join('');
  var blocks=lys.map(function(ly){
   var L=LAYERS[ly],t=topEl(r[ly]).slice(0,2),m=S[t[0]];
@@ -215,13 +285,13 @@ function result(res){
  }).join('');
  var table=KEYS.map(function(k){return '<div class="trow"><div class="tl" style="color:'+S[k].c+'">'+orb(k,34)+S[k].n+'</div><div class="tr"><h3 style="color:'+S[k].c+';margin-top:0">'+S[k].t+'・'+S[k].k+'</h3><p>'+S[k].d+'</p><h3 style="color:'+S[k].c+'">✦ 力を高めるには</h3><p>'+S[k].env+'</p></div></div>'}).join('');
  var cta=LINE_URL?'<a class="btn line" href="'+LINE_URL+'" target="_blank" rel="noopener">LINEで詳しい鑑定を受け取る</a>':'';
- app.innerHTML='<div class="hero"><p class="eyebrow">YOUR SPIRIT</p><h1>'+esc(res.name)+'さんに<br>宿る精霊</h1><div class="main">'+orb(m0,110)+'<div class="nm" style="color:'+S[m0].c+'">'+S[m0].n+'</div><div class="tt">'+S[m0].t+'・'+S[m0].k+'</div></div></div>'+
- '<div class="card"><h2>3つの精霊</h2><div class="sms">'+summary+'</div></div>'+
+ app.innerHTML=(shared?'<div class="card" style="text-align:center;border-color:#ff7ab6;margin-top:10px"><p style="margin:0;font-size:13px">共有された診断結果です'+(res.bad?'<br><b style="color:#ff5a7a">このURLは書き換えられている可能性があります</b>':'')+'</p></div>':'')+'<div class="hero"><p class="eyebrow">YOUR SPIRIT</p><h1>'+esc(res.name)+'さんに<br>宿る精霊</h1><div class="main">'+orb(m0,110)+'<div class="nm" style="color:'+S[m0].c+'">'+S[m0].n+'</div><div class="tt">'+S[m0].t+'・'+S[m0].k+'</div></div></div>'+
+ '<div class="card"><h2>3つの精霊</h2><div class="sms">'+summary+'</div></div>'+(res.d?darkCard(res.d,shared,res.name):'')+
  '<div class="card"><h2>精霊の星図</h2><p class="note" style="margin:0">3つの視点で、あなたがどの精霊の領域にいるかを表しています。</p>'+matrix(r)+'</div>'+
  blocks+
  '<div class="card"><h2>3つの視点から見えること</h2>'+compare(r).map(function(x){return '<p style="margin-bottom:10px">'+x+'</p>'}).join('')+'</div>'+
  '<div class="card"><h2>4つの精霊</h2>'+table+'</div>'+
- '<div class="card"><h2>結果をシェアする</h2>'+cta+'<button class="btn" onclick="share()">結果をシェアする</button><button class="btn ghost" onclick="home()">トップにもどる</button><p class="note">この診断は自己理解を楽しむためのもので、医学的・心理学的な診断ではありません。</p></div>';
+ (shared?'<div class="card"><h2>あなたも診断してみる</h2><p>あなたに宿る精霊と、暗黒面の状態は？全22問・約4分で診断できます。</p><button class="btn" onclick="startFresh()">自分も診断する</button></div>':'<div class="card"><h2>結果をシェアする</h2><p class="note" style="margin:0 0 4px">ボタンから結果のURLを送れます。開いた人は、あなたの結果（暗黒面も含む）をそのまま見られます。</p><a class="btn line" href="https://social-plugins.line.me/lineit/share?url='+encodeURIComponent(shareUrl(res))+'" target="_blank" rel="noopener">LINEで送る</a><a class="btn x" href="https://twitter.com/intent/tweet?text='+encodeURIComponent(shareText(res))+'&url='+encodeURIComponent(shareUrl(res))+'" target="_blank" rel="noopener">Xでシェア</a><button class="btn ghost" onclick="copyLink()">結果のURLをコピー</button>'+(navigator.share?'<button class="btn ghost" onclick="share()">ほかのアプリで送る</button>':'')+cta+'<button class="btn ghost" onclick="startFresh()">トップにもどる</button><p class="note">この診断は自己理解を楽しむためのもので、医学的・心理学的な診断ではありません。</p></div>');
  window.scrollTo(0,0);
 }
 function share(){
@@ -230,6 +300,6 @@ function share(){
  var p=navigator.share?navigator.share({text:t}):navigator.clipboard.writeText(t).then(function(){alert("コピーしました")});
  if(p&&p.catch)p.catch(function(){});
 }
-home();
+(function(){var m=location.search.match(/[?&]r=([^&]+)/);var sr=m&&decodeRes(decodeURIComponent(m[1]));if(sr)result(sr,true);else home()})();
 if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(function(){})}
 </script></body></html>
